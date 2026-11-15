@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Kiprop Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, professional writing portfolio for recruiters
+   IDEA: a clean case file: one folder per role, pages laid out like printed work
+   PICTURE: the sample pages themselves, large, on a quiet ground
+   COLOUR and TYPE: white, ink #101418, warm yellow slab #ffd84a for the active role; Manrope
+   LAYOUT: name and contact on top, role tabs, then the samples for the chosen role */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#101418);--ink:light-dark(#101418,#eef1f4);--soft:light-dark(#5a6470,#a7b0ba);--line:light-dark(#e3e6ea,#2a3138);--panel:light-dark(#f5f6f8,#171d23);--y:#ffd84a}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+header.band{border-bottom:1px solid var(--line);padding-bottom:28px}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.05;margin:0 0 10px;font-weight:800;text-wrap:balance}
+.lead{font-size:17px;max-width:68ch;margin:0 0 16px;color:var(--soft)}
+.contact{display:flex;flex-wrap:wrap;gap:8px 22px;font-weight:600;font-size:15px}
+.contact a{text-decoration:none;border-bottom:2px solid var(--y)}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:6px;padding:10px max(5vw,16px)}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;color:var(--soft)}
+nav a:hover{color:var(--ink);background:var(--panel)}
+nav a[aria-current=page]{background:var(--y);color:#101418}
+nav a:focus-visible,.pg:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.role h2{font-size:clamp(26px,3.4vw,34px);line-height:1.1;margin:0 0 8px;text-wrap:balance}
+.role>p{margin:0 0 28px;max-width:70ch;color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:28px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card h3{font-size:18px;margin:0 0 4px;line-height:1.25}
+.card .d{font-size:15px;color:var(--soft);margin:0 0 14px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);margin-bottom:8px}
+.pages{display:flex;flex-direction:column;gap:10px}
+.pg{display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff;cursor:zoom-in;padding:0}
+.pg img{display:block;width:100%;height:auto}
+.note{font-size:13px;color:var(--soft);margin-top:36px}
+dialog{border:0;padding:0;max-width:min(96vw,1000px);width:100%;background:transparent}
+dialog::backdrop{background:rgba(10,12,15,.82)}
+dialog img{display:block;width:100%;height:auto;background:#fff;border-radius:4px}
+.close{position:fixed;top:12px;right:12px;min-height:44px;min-width:44px;border:0;border-radius:8px;background:var(--y);color:#101418;font:700 15px Manrope,sans-serif;cursor:pointer;padding:0 14px}
+footer{border-top:1px solid var(--line);font-size:14px;color:var(--soft)}
+@media(prefers-reduced-motion:no-preference){.role{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header class="band"><div class="wrap">
+<h1>Emmanuel Kiprop Cheruiyot</h1>
+<p class="lead">Remote writer and content designer. Five years of freelance writing for international clients since 2021, and AI writing and response-evaluation work since March 2023. Samples below are grouped by role.</p>
+<div class="contact">
+<a href="mailto:emmanuelkiprop448@gmail.com">emmanuelkiprop448@gmail.com</a>
+<a href="https://www.linkedin.com/in/emmanuel-kiprop-195813396">LinkedIn profile</a>
+<span>Based in Kenya · works remotely across US hours</span>
+</div>
+</div></header>
+<nav aria-label="Roles"><div class="wrap" id="nav"></div></nav>
+<main class="band"><div class="wrap" id="main"></div></main>
+<footer class="band"><div class="wrap">All samples are spec work written for this portfolio. Kazi Assist, Pamoja Bank, Mvua Home, Tandaza Pay, Harbor Point Bank and Northbridge Online Academy are fictional. Click any page to enlarge it.</div></footer>
+<dialog id="dlg"><button class="close" id="cls" type="button">Close</button><img id="big" alt=""></dialog>
+<script>
+{
+const S={
+ aiA:{t:"AI response style guide",d:"Voice principles with do/don't examples, length and formatting rules, refusal patterns and a glossary for a banking budgeting assistant.",f:"AIContentDesigner_A_ResponseStyleGuide",n:3},
+ aiB:{t:"Before/after AI response rewrites",d:"Six weak responses (too long, vague, robotic, inaccurate, unsafe, off-tone) rewritten, with the reason for each fix.",f:"AIContentDesigner_B_BeforeAfterRewrites",n:1},
+ aiC:{t:"System prompt and edge-case microcopy",d:"The model's system prompt, five app states (loading, empty, error, low confidence, hand-off) and a prompt test plan.",f:"AIContentDesigner_C_SystemPromptAndEdgeCases",n:2},
+ cdA:{t:"Conversation flow: change a delivery address",d:"Flow diagram with branches for order not found, already shipped and talk to a person, plus the bot message for every step.",f:"ConversationDesigner_A_ConversationFlow",n:2},
+ cdB:{t:"Sample dialogues",d:"The same flow run with a smooth user, a confused user and an angry user.",f:"ConversationDesigner_B_SampleDialogues",n:2},
+ cdC:{t:"Chat content audit",d:"Five bot replies fixed for dead ends, jargon and overload, with the metrics to measure the change.",f:"ConversationDesigner_C_ChatContentAudit",n:2},
+ fA:{t:"Brand voice guide",d:"Brand promise, three voice traits with we say / we don't say examples, and rules for money language.",f:"FintechBrand_A_VoiceGuide",n:2},
+ fB:{t:"Round-up Savings launch page",d:"Mobile-first landing page with a worked savings example, FAQ and disclosure footnotes.",f:"FintechBrand_B_RoundUpLandingPage",n:2},
+ fC:{t:"Lifecycle emails, push and in-app",d:"Welcome, feature launch and re-engagement emails, plus push and in-app copy and fees turned into real amounts.",f:"FintechBrand_C_LifecycleMessages",n:2},
+ eA:{t:"Product description set",d:"Five SEO product pages (titles under 70 characters, feature-to-benefit bullets) and one product in mobile and desktop lengths.",f:"EcommerceCopy_A_ProductDescriptions",n:3},
+ eB:{t:"Category page and homepage hero",d:"125-word category intro targeting one search phrase, homepage hero and a seasonal promo banner.",f:"EcommerceCopy_B_CategoryAndHomepage",n:1},
+ eC:{t:"Email flow",d:"Two abandoned-cart emails and a collection launch, each with A/B subject lines and a testing plan.",f:"EcommerceCopy_C_EmailFlow",n:2},
+ edA:{t:"Program page: Certificate in Data Analytics",d:"Outcomes, format, career paths and FAQ at a US grade 8 reading level, with no job or salary promises.",f:"EducationCopy_A_ProgramPage",n:2},
+ edB:{t:"Enrollment email sequence",d:"Enquiry, deadline and welcome emails, each written for a parent and for an adult career-changer.",f:"EducationCopy_B_EnrollmentEmails",n:2},
+ edC:{t:"Social posts and blog",d:"Four webinar posts across platforms and a 300-word blog post on study habits.",f:"EducationCopy_C_SocialAndBlog",n:2},
+ gA:{t:"Help-center articles",d:"Setup and troubleshooting articles structured so people can scan them and an AI bot can quote any section on its own.",f:"GenAIContentStrategist_A_HelpCenterArticles",n:3},
+ gB:{t:"Content audit and plan",d:"Eight articles audited, three new articles prioritized, and success measures for one quarter.",f:"GenAIContentStrategist_B_ContentAuditPlan",n:2},
+ gC:{t:"AI answer quality test",d:"Bot answers rated against the help center and each weak answer traced to the article to fix.",f:"GenAIContentStrategist_C_AIAnswerQualityTest",n:1}
+};
+const R=[
+ {id:"ai-content-designer",nav:"AI Content Designer",h:"AI Content Designer",p:"How an AI assistant should sound, what it says when it is unsure or out of scope, and the prompt and microcopy that keep it consistent.",s:["aiA","aiB","aiC","gA"]},
+ {id:"conversation-designer",nav:"Conversation Designer",h:"Conversation Designer",p:"A complete chat flow, the dialogues it produces for different users, and an audit of weak bot replies.",s:["cdA","cdB","cdC","aiB"]},
+ {id:"fintech-copywriter",nav:"Fintech Brand Copywriter",h:"Senior Brand Copywriter, fintech",p:"One brand voice across guide, landing page, email, push and in-app, with fees and rates always stated plainly.",s:["fA","fB","fC"]},
+ {id:"ecommerce-copywriter",nav:"E-commerce Copywriter",h:"Copywriter, consumer e-commerce",p:"Product pages, category and homepage copy and an email flow for a home and bedding brand.",s:["eA","eB","eC"]},
+ {id:"education-copywriter",nav:"Education Copywriter",h:"Copywriter, education",p:"A program page, an enrollment email sequence for two audiences, and student-facing social and blog content.",s:["edA","edB","edC"]},
+ {id:"content-strategist",nav:"GenAI Content Strategist",h:"Content Strategist, generative AI support content",p:"Help-center content written for people and AI bots, an audit and plan, and a quality test that ties bot answers to source articles.",s:["gA","gB","gC"]}
+];
+const nav=document.getElementById('nav'),main=document.getElementById('main');
+nav.innerHTML=R.map(r=>`<a href="#${r.id}" data-id="${r.id}">${r.nav}</a>`).join('');
+const card=(k,primary)=>{const x=S[k];const pages=Array.from({length:x.n},(_,i)=>`<button class="pg" type="button" data-src="${x.f}-${i+1}.jpg" aria-label="Enlarge ${x.t}, page ${i+1}"><img loading="lazy" src="${x.f}-${i+1}.jpg" alt="${x.t}, page ${i+1}" width="935" height="1210"></button>`).join('');
+ return `<article class="card">${primary?'':'<span class="tag">Also relevant</span>'}<h3>${x.t}</h3><p class="d">${x.d}</p><div class="pages">${pages}</div></article>`};
+const pre={"ai-content-designer":"ai","conversation-designer":"cd","fintech-copywriter":"f","ecommerce-copywriter":"e","education-copywriter":"ed","content-strategist":"g"};
+const show=()=>{const h=location.hash.slice(1);const r=R.find(z=>z.id===h)||R[0];
+ nav.querySelectorAll('a').forEach(a=>{if(a.dataset.id===r.id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ const p=pre[r.id];
+ main.innerHTML=`<section class="role" id="r-${r.id}"><h2>${r.h}</h2><p>${r.p}</p><div class="grid">${r.s.map(k=>card(k,k.replace(/[A-Z]$/,'')===p)).join('')}</div></section>`;};
+window.addEventListener('hashchange',()=>{show();window.scrollTo(0,0)});
+show();
+const dlg=document.getElementById('dlg'),big=document.getElementById('big');
+main.addEventListener('click',e=>{const b=e.target.closest('.pg');if(!b)return;big.src=b.dataset.src;big.alt=b.getAttribute('aria-label');try{dlg.showModal()}catch(_){dlg.setAttribute('open','')}});
+document.getElementById('cls').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+}
+</script>
+</body>
+</html>
